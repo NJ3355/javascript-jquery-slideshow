@@ -1,0 +1,104 @@
+<html>
+<head>
+	<title></title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<style>
+
+#container {
+	width:800px;
+	height:800px;
+	text-align: center;
+}
+
+#slider {
+	height:300px;
+	width: 400px;
+	border-style: solid;
+	margin: auto;
+	text-align: center;
+}
+
+#slider img {
+	height:300px;
+	width:400px;
+}
+
+
+
+</style>	
+</head>
+<body>
+
+
+<div id="container">
+	<div id="slider">
+
+	</div>
+	<button id="previous" onClick="x.previous()">Previous</button>
+	<button id="next" onClick="x.next()">Next</button>
+</div>
+
+
+<script>
+
+
+
+var slider = function() {
+
+	var images = ["sports1.jpg", "sports2.png", "sports3.jpg"];
+	var currentNum = 0;
+
+	this.next = function(){
+		currentNum++;
+		if(currentNum > images.length - 1)
+		{
+			currentNum = 0;
+		}
+		this.current();
+	}
+
+
+	this.previous = function(){
+		currentNum--;
+		if(currentNum < 0)
+		{
+			currentNum = images.length - 1;
+		}
+		this.current();
+	}
+
+	this.current = function(){
+		/*$('#slider').html("<img src=" + images[currentNum] + "/>");*/
+		$('#slider').html($('<img>').attr('src', images[currentNum]));
+	}
+
+	this.get = function() {
+		return currentNum;
+	}
+}
+
+
+var x = new slider();
+x.current();
+
+
+
+
+
+
+ 
+
+
+
+
+
+</script>
+
+
+
+
+
+</body>
+</html>
